@@ -1,5 +1,6 @@
 # This function aims to take the cleaned/organized data and return relevent regression models
 # relies on lm() and glm() from stats and if negative binomial is an option may have to rely on glm.nb() from MASS
+library(MASS)
 riditreg<-function(df, yvar, method, offsetvar){
   # df is dataframe
   # yvar is the dependent variable being modeled (must be in quotations)
@@ -10,5 +11,10 @@ riditreg<-function(df, yvar, method, offsetvar){
   } else if (method == "poisson"){
     reg<-glm(df[[yvar]]~ridit, data = df, family = poisson(link = "log"), offset = log(df[[offsetvar]]))
     summary(reg)
+  } else if (method == "nb"){
+    reg<-glm.nb(df[[yvar]]~ridit+offset(log(df[[offsetvar]])))
+    summary(reg)
+  } else if (method == "logistic"){
+
   }
 }
