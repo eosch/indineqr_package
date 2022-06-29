@@ -2,9 +2,9 @@ library(tidyverse)
 # This function aims to rearrange the data in df by the variable measuring inequality (ineqvar) in a specified order
 # Additionally, it creates new variables for frequencies and ridit
 dfclean<-function(ineqvar, df, order, countvar){
-  # ineqvar must be input with quotations to work
+  # ineqvar must be input with quotations to work and is the variable measuring inequality
   # df is relevant dataframe
-  # order is either "l2h" for low to high or "h2l" for high to low
+  # order is either "l2h" for low to high or "h2l" for high to low based on how the inequality measurement needs to be arranged
   # countvar is the variable with counts used for creating the frequencies and the ridit
 
   # rearranging by inequality
