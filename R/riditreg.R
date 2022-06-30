@@ -12,11 +12,13 @@ riditreg<-function(df, yvar, method, offsetvar, countvar){
   # offsetvar is the is the variable used in the offset for poisson and nb
   if (method == "lm"){
     reg<-lm(df[[yvar]]~ridit, df)
-    summary(reg)
     SII_01<-reg$coeff[[1]] - (reg$coeff[[1]] + reg$coeff[[2]])
     RII_01<-reg$coeff[[1]] / (reg$coeff[[1]] + reg$coeff[[2]])
     SII_minmax<-(reg$coeff[[1]] + reg$coeff[[2]] * df$ridit[1]) - (reg$coeff[[1]] + reg$coeff[[2]] * df$ridit[length(df$ridit)])
     RII_minmax<-(reg$coeff[[1]] + reg$coeff[[2]] * df$ridit[1]) / (reg$coeff[[1]] + reg$coeff[[2]] * df$ridit[length(df$ridit)])
+    output<-list(summary(reg), SII_01, RII_01, SII_minmax, RII_minmax)
+    names(output)<-c("regression", "SII_01", "RII_01", "SII_minmax", "RII_minmax")
+    return(output)
   } else if (method == "poisson"){
     reg<-glm(df[[yvar]]~ridit, data = df, family = poisson(link = "log"), offset = log(df[[offsetvar]]))
     summary(reg)
