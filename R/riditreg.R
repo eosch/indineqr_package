@@ -21,12 +21,30 @@ riditreg<-function(df, yvar, method, offsetvar, countvar){
     return(output)
   } else if (method == "poisson"){
     reg<-glm(df[[yvar]]~ridit, data = df, family = poisson(link = "log"), offset = log(df[[offsetvar]]))
-    summary(reg)
+    SII_01<-exp(reg$coeff[[1]]) - exp(reg$coeff[[1]] + reg$coeff[[2]])
+    RII_01<-exp(reg$coeff[[1]]) / exp(reg$coeff[[1]] + reg$coeff[[2]])
+    SII_minmax<-exp(reg$coeff[[1]] + reg$coeff[[2]] * df$ridit[1]) - exp(reg$coeff[[1]] + reg$coeff[[2]] * df$ridit[length(df$ridit)])
+    RII_minmax<-exp(reg$coeff[[1]] + reg$coeff[[2]] * df$ridit[1]) / exp(reg$coeff[[1]] + reg$coeff[[2]] * df$ridit[length(df$ridit)])
+    output<-list(summary(reg), SII_01, RII_01, SII_minmax, RII_minmax)
+    names(output)<-c("regression", "SII_01", "RII_01", "SII_minmax", "RII_minmax")
+    return(output)
   } else if (method == "nb"){
     reg<-glm.nb(df[[yvar]]~ridit+offset(log(df[[offsetvar]])))
-    summary(reg)
+    SII_01<-exp(reg$coeff[[1]]) - exp(reg$coeff[[1]] + reg$coeff[[2]])
+    RII_01<-exp(reg$coeff[[1]]) / exp(reg$coeff[[1]] + reg$coeff[[2]])
+    SII_minmax<-exp(reg$coeff[[1]] + reg$coeff[[2]] * df$ridit[1]) - exp(reg$coeff[[1]] + reg$coeff[[2]] * df$ridit[length(df$ridit)])
+    RII_minmax<-exp(reg$coeff[[1]] + reg$coeff[[2]] * df$ridit[1]) / exp(reg$coeff[[1]] + reg$coeff[[2]] * df$ridit[length(df$ridit)])
+    output<-list(summary(reg), SII_01, RII_01, SII_minmax, RII_minmax)
+    names(output)<-c("regression", "SII_01", "RII_01", "SII_minmax", "RII_minmax")
+    return(output)
   } else if (method == "logistic"){
     reg<-glm(df[[countvar]]/df[[offsetvar]]~ridit, data = df, family = "binomial", weights = df[[offsetvar]])
-    summary(reg)
+    SII_01<-(exp(reg$coeff[[1]])/(1 + exp(reg$coeff[[1]]))) - (exp(reg$coeff[[1]] + reg$coeff[[2]])/(1+exp(reg$coeff[[1]] + reg$coeff[[2]])))
+    RII_01<-(exp(reg$coeff[[1]])/(1 + exp(reg$coeff[[1]]))) / (exp(reg$coeff[[1]] + reg$coeff[[2]])/(1+exp(reg$coeff[[1]] + reg$coeff[[2]])))
+    SII_minmax<-(exp(reg$coeff[[1]] + reg$coeff[[2]] * df$ridit[1])/(1+exp(reg$coeff[[1]] + reg$coeff[[2]] * df$ridit[1]))) - (exp(reg$coeff[[1]] + reg$coeff[[2]] * df$ridit[length(df$ridit)])/(1+exp(reg$coeff[[1]] + reg$coeff[[2]] * df$ridit[length(df$ridit)])))
+    RII_minmax<-(exp(reg$coeff[[1]] + reg$coeff[[2]] * df$ridit[1])/(1+exp(reg$coeff[[1]] + reg$coeff[[2]] * df$ridit[1]))) / (exp(reg$coeff[[1]] + reg$coeff[[2]] * df$ridit[length(df$ridit)])/(1+exp(reg$coeff[[1]] + reg$coeff[[2]] * df$ridit[length(df$ridit)])))
+    output<-list(summary(reg), SII_01, RII_01, SII_minmax, RII_minmax)
+    names(output)<-c("regression", "SII_01", "RII_01", "SII_minmax", "RII_minmax")
+    return(output)
   }
 }
