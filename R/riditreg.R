@@ -1,7 +1,7 @@
 # This function aims to take the cleaned/organized data and return relevant regression models
 # relies on lm() and glm() from stats
 library(MASS)
-riditreg<-function(df, yvar, method, offsetvar, countvar){
+riditreg<-function(df, yvar, method, offsetvar, countvar, conf_level = 0.95){
   # df is dataframe
   # yvar is the dependent variable being modeled (must be in quotations)
   # method is the chosen regression method with options:
@@ -10,12 +10,21 @@ riditreg<-function(df, yvar, method, offsetvar, countvar){
   #   "nb" for negative binomial regression
   #   "logistic" for logistic regression
   # offsetvar is the is the variable used in the offset for poisson and nb
+  # conf_level is the the desired confidence level for the confidence intervals on the indices
   if (method == "lm"){
     reg<-lm(df[[yvar]]~ridit, df)
     SII_01<-reg$coeff[[1]] - (reg$coeff[[1]] + reg$coeff[[2]])
     RII_01<-reg$coeff[[1]] / (reg$coeff[[1]] + reg$coeff[[2]])
     SII_minmax<-(reg$coeff[[1]] + reg$coeff[[2]] * df$ridit[1]) - (reg$coeff[[1]] + reg$coeff[[2]] * df$ridit[length(df$ridit)])
     RII_minmax<-(reg$coeff[[1]] + reg$coeff[[2]] * df$ridit[1]) / (reg$coeff[[1]] + reg$coeff[[2]] * df$ridit[length(df$ridit)])
+    SII_01LL<-reg$coeff[[1]] - (reg$coeff[[1]] + reg$coeff[[2]])
+    RII_01LL<-reg$coeff[[1]] / (reg$coeff[[1]] + reg$coeff[[2]])
+    SII_minmaxLL<-(reg$coeff[[1]] + reg$coeff[[2]] * df$ridit[1]) - (reg$coeff[[1]] + reg$coeff[[2]] * df$ridit[length(df$ridit)])
+    RII_minmaxLL<-(reg$coeff[[1]] + reg$coeff[[2]] * df$ridit[1]) / (reg$coeff[[1]] + reg$coeff[[2]] * df$ridit[length(df$ridit)])
+    SII_01UL<-reg$coeff[[1]] - (reg$coeff[[1]] + reg$coeff[[2]])
+    RII_01UL<-reg$coeff[[1]] / (reg$coeff[[1]] + reg$coeff[[2]])
+    SII_minmaxUL<-(reg$coeff[[1]] + reg$coeff[[2]] * df$ridit[1]) - (reg$coeff[[1]] + reg$coeff[[2]] * df$ridit[length(df$ridit)])
+    RII_minmaxUL<-(reg$coeff[[1]] + reg$coeff[[2]] * df$ridit[1]) / (reg$coeff[[1]] + reg$coeff[[2]] * df$ridit[length(df$ridit)])
     output<-list(summary(reg), SII_01, RII_01, SII_minmax, RII_minmax)
     names(output)<-c("regression", "SII_01", "RII_01", "SII_minmax", "RII_minmax")
     return(output)
