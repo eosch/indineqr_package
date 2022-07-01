@@ -1,6 +1,17 @@
 library(tidyverse)
 # This function aims to rearrange the data in df by the variable measuring inequality (ineqvar) in a specified order
 # Additionally, it creates new variables for frequencies and ridit
+#' Title
+#'
+#' @param ineqvar
+#' @param df
+#' @param order
+#' @param offsetvar
+#'
+#' @return
+#' @export
+#'
+#' @examples
 dfclean<-function(ineqvar, df, order, offsetvar){
   # ineqvar must be input with quotations to work and is the variable measuring inequality
   # df is relevant dataframe

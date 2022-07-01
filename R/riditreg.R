@@ -1,6 +1,19 @@
 # This function aims to take the cleaned/organized data and return relevant regression models
 # relies on lm() and glm() from stats
 library(MASS)
+#' Title
+#'
+#' @param df
+#' @param yvar
+#' @param method
+#' @param offsetvar
+#' @param countvar
+#' @param conf_level
+#'
+#' @return
+#' @export
+#'
+#' @examples
 riditreg<-function(df, yvar, method, offsetvar, countvar, conf_level = 0.95){
   # df is dataframe
   # yvar is the dependent variable being modeled (must be in quotations)
