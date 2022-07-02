@@ -25,7 +25,7 @@ riditreg<-function(df, yvar, method, offsetvar, countvar, conf_level = 0.95){
   # offsetvar is the is the variable used in the offset for poisson and nb
   # conf_level is the the desired confidence level for the confidence intervals on the indices
   if (method == "lm"){
-    reg<-lm(df[[yvar]]~ridit, df)
+    reg<-lm(df[[yvar]]~ridit, df, weights = df[[offsetvar]])
     SII_01<-reg$coeff[[1]] - (reg$coeff[[1]] + reg$coeff[[2]])
     RII_01<-reg$coeff[[1]] / (reg$coeff[[1]] + reg$coeff[[2]])
     SII_minmax<-(reg$coeff[[1]] + reg$coeff[[2]] * df$ridit[1]) - (reg$coeff[[1]] + reg$coeff[[2]] * df$ridit[length(df$ridit)])
@@ -51,7 +51,7 @@ riditreg<-function(df, yvar, method, offsetvar, countvar, conf_level = 0.95){
     names(output)<-c("regression", "SII_01", "RII_01", "SII_minmax", "RII_minmax")
     return(output)
   } else if (method == "nb"){
-    reg<-glm.nb(df[[yvar]]~ridit+offset(log(df[[offsetvar]])))
+    reg<-glm.nb(df[[yvar]]~ridit+offset(log(df[[offsetvar]])), data = df)
     SII_01<-exp(reg$coeff[[1]]) - exp(reg$coeff[[1]] + reg$coeff[[2]])
     RII_01<-exp(reg$coeff[[1]]) / exp(reg$coeff[[1]] + reg$coeff[[2]])
     SII_minmax<-exp(reg$coeff[[1]] + reg$coeff[[2]] * df$ridit[1]) - exp(reg$coeff[[1]] + reg$coeff[[2]] * df$ridit[length(df$ridit)])
