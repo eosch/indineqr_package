@@ -1,4 +1,4 @@
-library(tidyverse)
+library(dplyr)
 #' Clean and organize data to prepare for calculating indices of inequality
 #'
 #' This function aims to rearrange the data in a dataframe by the variable measuring inequality (ineqvar) in a specified order.
@@ -10,9 +10,9 @@ library(tidyverse)
 #' @param offsetvar the count variable from df in quotations used for creating the frequencies and the ridit
 #'
 #' @return dataframe with the new variables and data arranged in the specified order
-#' @export dfclean
 #'
 #' @examples
+#' @export
 dfclean<-function(ineqvar, df, order, offsetvar){
   # rearranging by inequality
   if (order == "l2h") {
