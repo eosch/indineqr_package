@@ -10,7 +10,7 @@ library(tidyverse)
 #' @param offsetvar the count variable from df in quotations used for creating the frequencies and the ridit
 #'
 #' @return dataframe with the new variables and data arranged in the specified order
-#' @export
+#' @export dfclean
 #'
 #' @examples
 dfclean<-function(ineqvar, df, order, offsetvar){
