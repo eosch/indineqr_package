@@ -1,8 +1,8 @@
 library(tidyverse)
 #' Clean and organize data to prepare for calculating indices of inequality
 #'
-#' This function aims to rearrange the data in df by the variable measuring inequality (ineqvar) in a specified order.
-#' Additionally, it creates new variables within df for frequency, cumulative frequency, and ridit.
+#' This function aims to rearrange the data in a dataframe by the variable measuring inequality (ineqvar) in a specified order.
+#' Additionally, it creates new variables within the dataframe for frequency, cumulative frequency, and ridit.
 #'
 #' @param ineqvar variable name in quotations of the variable within df measuring inequality
 #' @param df the relevant input dataframe
