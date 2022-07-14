@@ -4,10 +4,10 @@ library(dplyr)
 #' This function aims to rearrange the data in a dataframe by the variable measuring inequality (ineqvar) in a specified order.
 #' Additionally, it creates new variables within the dataframe for frequency, cumulative frequency, and ridit.
 #'
-#' @param ineqvar variable name in quotations of the variable within df measuring inequality
+#' @param ineqvar variable name, in quotations, of the variable within df measuring inequality
 #' @param df the relevant input dataframe
 #' @param order either "l2h" for low to high or "h2l" for high to low based on how the ineqvar needs to be arranged
-#' @param offsetvar the count variable from df in quotations used for creating the frequencies and the ridit
+#' @param offsetvar the count variable from df, in quotations, used for creating the frequencies and the ridit
 #'
 #' @return dataframe with the new variables and data arranged in the specified order
 #'

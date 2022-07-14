@@ -3,12 +3,12 @@
 library(MASS)
 #' Title
 #'
-#' @param df
-#' @param yvar
-#' @param method
-#' @param offsetvar
-#' @param countvar
-#' @param conf_level
+#' @param df the input dataframe organized correctly by previously using the dfclean() function
+#' @param yvar the rate variable name, in quotations, used as the response variable in some of the model options
+#' @param method the regression method to be used with options "lm", "poisson", "nb", and "logistic"
+#' @param offsetvar the count variable, in quotations, of the total number of outcomes in each group used as weights/offsets in the models
+#' @param countvar the count variable, in quotations, of the number of occurrences in each group used as counts in the logistic regression
+#' @param conf_level confidence level for the confidence intervals
 #'
 #' @return
 #' @export
