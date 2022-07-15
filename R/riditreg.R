@@ -23,6 +23,11 @@ library(MASS)
 #' @export
 #'
 #' @examples
+#' df<-dfclean(ineqvar = "IDSx", dfexample, order = "l2h", offsetvar = "NV")
+#' riditreg(df, yvar = "TMN", method = "lm", offsetvar = "NV")
+#' riditreg(df, yvar = "MN", method = "poisson", offsetvar = "NV")
+#' riditreg(df, yvar = "MN", method = "nb", offsetvar = "NV")
+#' riditreg(df, countvar = "MN", method = "logistic", offsetvar = "NV")
 riditreg<-function(df, yvar, method, offsetvar, countvar, conf_level = 0.95){
   # df is dataframe
   # yvar is the dependent variable being modeled (must be in quotations)

@@ -22,3 +22,6 @@ dataframe with the new variables and data arranged in the specified order
 This function aims to rearrange the data in a dataframe by the variable measuring inequality (ineqvar) in a specified order.
 Additionally, it creates new variables within the dataframe for frequency, cumulative frequency, and ridit.
 }
+\examples{
+dfclean(ineqvar = "IDSx", dfexample, order = "l2h", offsetvar = "NV")
+}

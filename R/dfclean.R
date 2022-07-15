@@ -12,6 +12,7 @@ library(dplyr)
 #' @return dataframe with the new variables and data arranged in the specified order
 #'
 #' @examples
+#' dfclean(ineqvar = "IDSx", dfexample, order = "l2h", offsetvar = "NV")
 #' @export
 dfclean<-function(ineqvar, df, order, offsetvar){
   # rearranging by inequality

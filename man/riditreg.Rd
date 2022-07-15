@@ -32,3 +32,10 @@ This function aims to take the cleaned/organized data from the dfclean() functio
 It also returns estimates of the Slope Index of Inequality and Relative Index of Inequality for the comparison of both
 the least and greatest ridit values in the dataframe as well as the theoretical min and max of 0 and 1.
 }
+\examples{
+df<-dfclean(ineqvar = "IDSx", dfexample, order = "l2h", offsetvar = "NV")
+riditreg(df, yvar = "TMN", method = "lm", offsetvar = "NV")
+riditreg(df, yvar = "MN", method = "poisson", offsetvar = "NV")
+riditreg(df, yvar = "MN", method = "nb", offsetvar = "NV")
+riditreg(df, countvar = "MN", method = "logistic", offsetvar = "NV")
+}
