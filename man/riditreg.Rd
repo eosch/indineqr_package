@@ -7,7 +7,17 @@
 riditreg(df, yvar, method, offsetvar, countvar, conf_level = 0.95)
 }
 \arguments{
-\item{conf_level}{}
+\item{df}{the input dataframe organized correctly by previously using the dfclean() function}
+
+\item{yvar}{the rate variable name, in quotations, used as the response variable in some of the model options}
+
+\item{method}{the regression method to be used with options "lm", "poisson", "nb", and "logistic"}
+
+\item{offsetvar}{the count variable, in quotations, of the total number of outcomes in each group used as weights/offsets in the models}
+
+\item{countvar}{the count variable, in quotations, of the number of occurrences in each group used as counts in the logistic regression}
+
+\item{conf_level}{confidence level for the confidence intervals}
 }
 \value{
 

@@ -7,13 +7,13 @@
 dfclean(ineqvar, df, order, offsetvar)
 }
 \arguments{
-\item{ineqvar}{variable name in quotations of the variable within df measuring inequality}
+\item{ineqvar}{variable name, in quotations, of the variable within df measuring inequality}
 
 \item{df}{the relevant input dataframe}
 
 \item{order}{either "l2h" for low to high or "h2l" for high to low based on how the ineqvar needs to be arranged}
 
-\item{offsetvar}{the count variable from df in quotations used for creating the frequencies and the ridit}
+\item{offsetvar}{the count variable from df, in quotations, used for creating the frequencies and the ridit}
 }
 \value{
 dataframe with the new variables and data arranged in the specified order
