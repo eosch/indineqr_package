@@ -1,7 +1,11 @@
 # This function aims to take the cleaned/organized data and return relevant regression models
 # relies on lm() and glm() from stats
 library(MASS)
-#' Title
+#' Create models and calculate indices of inequality
+#'
+#' This function aims to take the cleaned/organized data from the dfclean() function and returns relevant regression models.
+#' It also returns estimates of the Slope Index of Inequality and Relative Index of Inequality for the comparison of both
+#' the least and greatest ridit values in the dataframe as well as the theoretical min and max of 0 and 1.
 #'
 #' @param df the input dataframe organized correctly by previously using the dfclean() function
 #' @param yvar the rate variable name, in quotations, used as the response variable in some of the model options

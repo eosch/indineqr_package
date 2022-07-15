@@ -2,7 +2,7 @@
 % Please edit documentation in R/riditreg.R
 \name{riditreg}
 \alias{riditreg}
-\title{Title}
+\title{Create models and calculate indices of inequality}
 \usage{
 riditreg(df, yvar, method, offsetvar, countvar, conf_level = 0.95)
 }
@@ -23,5 +23,7 @@ riditreg(df, yvar, method, offsetvar, countvar, conf_level = 0.95)
 
 }
 \description{
-Title
+This function aims to take the cleaned/organized data from the dfclean() function and returns relevant regression models.
+It also returns estimates of the Slope Index of Inequality and Relative Index of Inequality for the comparison of both
+the least and greatest ridit values in the dataframe as well as the theoretical min and max of 0 and 1.
 }
