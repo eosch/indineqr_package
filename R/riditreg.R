@@ -14,7 +14,12 @@ library(MASS)
 #' @param countvar the count variable, in quotations, of the number of occurrences in each group used as counts in the logistic regression
 #' @param conf_level confidence level for the confidence intervals
 #'
-#' @return
+#' @return A list consisting of the following:
+#' \item{regression}{The summary output of the selected regression model.}
+#' \item{SII_01}{The Slope Index of Inequality comparing ridit=0 and ridit=1.}
+#' \item{RII_01}{The Relative Index of Inequality comparing ridit=0 and ridit=1.}
+#' \item{SII_minmax}{The Slope Index of Inequality comparing the min ridit value from df and the max ridit value from df.}
+#' \item{RII_minmax}{The Relative Index of Inequality comparing the min ridit value from df and the max ridit value from df.}
 #' @export
 #'
 #' @examples

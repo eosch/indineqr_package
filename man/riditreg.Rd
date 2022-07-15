@@ -20,7 +20,12 @@ riditreg(df, yvar, method, offsetvar, countvar, conf_level = 0.95)
 \item{conf_level}{confidence level for the confidence intervals}
 }
 \value{
-
+A list consisting of the following:
+\item{regression}{The summary output of the selected regression model.}
+\item{SII_01}{The Slope Index of Inequality comparing ridit=0 and ridit=1.}
+\item{RII_01}{The Relative Index of Inequality comparing ridit=0 and ridit=1.}
+\item{SII_minmax}{The Slope Index of Inequality comparing the min ridit value from df and the max ridit value from df.}
+\item{RII_minmax}{The Relative Index of Inequality comparing the min ridit value from df and the max ridit value from df.}
 }
 \description{
 This function aims to take the cleaned/organized data from the dfclean() function and returns relevant regression models.
