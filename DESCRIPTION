@@ -15,6 +15,7 @@ Suggests:
     spelling
 Language: en-US
 Imports: 
+    stats,
     dplyr
 Depends: 
     R (>= 2.10)

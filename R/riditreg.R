@@ -1,6 +1,6 @@
 # This function aims to take the cleaned/organized data and return relevant regression models
 # relies on lm() and glm() from stats
-library(MASS)
+library(stats)
 #' Create models and calculate indices of inequality
 #'
 #' This function aims to take the cleaned/organized data from the dfclean() function and returns relevant regression models.
@@ -65,7 +65,7 @@ riditreg<-function(df, yvar, method, offsetvar, countvar, conf_level = 0.95){
     names(output)<-c("regression", "SII_01", "RII_01", "SII_minmax", "RII_minmax")
     return(output)
   } else if (method == "nb"){
-    reg<-glm.nb(df[[yvar]]~ridit+offset(log(df[[offsetvar]])), data = df)
+    reg<-MASS::glm.nb(df[[yvar]]~ridit+offset(log(df[[offsetvar]])), data = df)
     SII_01<-exp(reg$coeff[[1]]) - exp(reg$coeff[[1]] + reg$coeff[[2]])
     RII_01<-exp(reg$coeff[[1]]) / exp(reg$coeff[[1]] + reg$coeff[[2]])
     SII_minmax<-exp(reg$coeff[[1]] + reg$coeff[[2]] * df$ridit[1]) - exp(reg$coeff[[1]] + reg$coeff[[2]] * df$ridit[length(df$ridit)])
