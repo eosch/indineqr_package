@@ -16,6 +16,7 @@ Suggests:
 Language: en-US
 Imports: 
     stats,
-    dplyr
+    dplyr,
+    MASS
 Depends: 
     R (>= 2.10)

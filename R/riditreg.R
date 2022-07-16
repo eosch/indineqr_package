@@ -22,6 +22,7 @@ library(stats)
 #' \item{RII_minmax}{The Relative Index of Inequality comparing the min ridit value from df and the max ridit value from df.}
 #' @export
 #' @import stats
+#' @importFrom MASS glm.nb
 #'
 #' @examples
 #' df<-dfclean(ineqvar = "IDSx", dfexample, order = "l2h", offsetvar = "NV")
