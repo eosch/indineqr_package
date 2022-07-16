@@ -2,3 +2,5 @@
 
 export(dfclean)
 export(riditreg)
+import(dplyr)
+import(stats)

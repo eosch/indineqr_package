@@ -14,6 +14,7 @@ library(dplyr)
 #' @examples
 #' dfclean(ineqvar = "IDSx", dfexample, order = "l2h", offsetvar = "NV")
 #' @export
+#' @import dplyr
 dfclean<-function(ineqvar, df, order, offsetvar){
   # rearranging by inequality
   if (order == "l2h") {

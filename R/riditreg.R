@@ -21,6 +21,7 @@ library(stats)
 #' \item{SII_minmax}{The Slope Index of Inequality comparing the min ridit value from df and the max ridit value from df.}
 #' \item{RII_minmax}{The Relative Index of Inequality comparing the min ridit value from df and the max ridit value from df.}
 #' @export
+#' @import stats
 #'
 #' @examples
 #' df<-dfclean(ineqvar = "IDSx", dfexample, order = "l2h", offsetvar = "NV")
