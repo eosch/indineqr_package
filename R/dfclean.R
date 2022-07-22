@@ -1,4 +1,6 @@
 library(dplyr)
+# dplyr functions are used for data manipulation
+
 #' Clean and organize data to prepare for calculating indices of inequality
 #'
 #' This function aims to rearrange the data in a dataframe by the variable measuring inequality (ineqvar) in a specified order.
